@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "drop_confirm",
+  "version": "${version}",
+  "name": "DropConfirm",
+  "description": "Think twice before you drop.",
+  "authors": [
+    "pupbrained"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+  "license": "Insert License Here",
+  "icon": "assets/drop_confirm/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "xyz.pupbrained.fabric.DropConfirmFabric"
+    ],
+    "modmenu": [
+      {
+        "value": "xyz.pupbrained.fabric.config.ModMenuIntegration"
+      }
+    ]
+  },
+  "mixins": [
+    "drop_confirm.mixins.json",
+    "drop_confirm-common.mixins.json"
+  ],
+  "depends": {
+    "fabric": "*",
+    "minecraft": ">=1.20.1",
+    "architectury": ">=9.1.12"
+  }
+}
