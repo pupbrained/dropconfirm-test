@@ -15,9 +15,9 @@ public class DropConfirmExpectPlatform {
      * Example:
      * Expect: xyz.pupbrained.DropConfirmExpectPlatform#getConfigDirectory()
      * Actual Fabric: xyz.pupbrained.fabric.DropConfirmExpectPlatformImpl#getConfigDirectory()
-     * Actual Forge: xyz.pupbrained.forge.DropConfirmExpectPlatformImpl#getConfigDirectory()
+     * Actual NeoForge: xyz.pupbrained.neoforge.DropConfirmExpectPlatformImpl#getConfigDirectory()
      * <p>
-     * <a href="https://plugins.jetbrains.com/plugin/16210-architectury">You should also get the IntelliJ plugin to help with @ExpectPlatform.</a>
+     * <a href="https://plugins.jetbrains.com/plugin/16210-achitectury">You should also get the IntelliJ plugin to help with @ExpectPlatform.</a>
      */
     @ExpectPlatform
     public static Path getConfigDirectory() {

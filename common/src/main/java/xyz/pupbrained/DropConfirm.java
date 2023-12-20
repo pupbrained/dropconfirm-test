@@ -8,6 +8,5 @@ public class DropConfirm {
     public static final Logger LOGGER = LogManager.getLogger("DropConfirm");
 
     public static void init() {
-        System.out.println(DropConfirmExpectPlatform.getConfigDirectory().toAbsolutePath().normalize().toString());
     }
 }

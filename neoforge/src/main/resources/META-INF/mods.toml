@@ -1,11 +1,11 @@
 modLoader = "javafml"
-loaderVersion = "[47,)"
+loaderVersion = "[1,)"
 #issueTrackerURL = ""
 license = "Insert License Here"
 
 [[mods]]
 modId = "drop_confirm"
-version = "${mod_version}"
+version = "${version}"
 displayName = "DropConfirm"
 authors = "pupbrained"
 description = '''
@@ -14,22 +14,18 @@ Think twice before you drop.
 #logoFile = ""
 
 [[dependencies.drop_confirm]]
-modId = "forge"
-mandatory = true
-versionRange = "[47,)"
+modId = "neoforge"
+type = "required"
+versionRange = "[20,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.drop_confirm]]
 modId = "minecraft"
-mandatory = true
-versionRange = "[1.20.1,)"
+type = "required"
+versionRange = "[1.20.4,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.drop_confirm]]
-modId = "architectury"
-mandatory = true
-versionRange = "[9.1.12,)"
-ordering = "AFTER"
-side = "BOTH"
+[[mixins]]
+config = "drop_confirm.mixins.json"

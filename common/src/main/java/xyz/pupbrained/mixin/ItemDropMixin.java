@@ -12,8 +12,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import xyz.pupbrained.DropConfirm;
-import xyz.pupbrained.Util;
 import xyz.pupbrained.config.DropConfirmConfig;
+import xyz.pupbrained.Util;
 
 import java.util.Objects;
 
@@ -22,6 +22,7 @@ public class ItemDropMixin {
   @Inject(method = "dropSelectedItem", at = @At("HEAD"), cancellable = true)
   private void onItemDrop(boolean entireStack, CallbackInfoReturnable<Boolean> cir) {
     final var mc = MinecraftClient.getInstance();
+    final var config = DropConfirmConfig.GSON.instance();
     final var player = Objects.requireNonNull(mc.player);
 
 //    System.out.println(DropConfirmConfig.enabled);
@@ -35,9 +36,9 @@ public class ItemDropMixin {
     final var inventory = player.getInventory();
     var itemStack = inventory.getMainHandStack();
 
-    if (DropConfirmConfig.blacklistedItems.contains(itemStack.getItem())) {
-      if(!DropConfirmConfig.treatAsWhitelist) return;
-    } else if (DropConfirmConfig.treatAsWhitelist) {
+    if (config.blacklistedItems.contains(itemStack.getItem())) {
+      if(!config.treatAsWhitelist) return;
+    } else if (config.treatAsWhitelist) {
       return;
     }
 
@@ -59,7 +60,7 @@ public class ItemDropMixin {
       new Thread(() -> {
         try {
 //          Thread.sleep((long) (config.confirmationResetDelay * 1000));
-          Thread.sleep((long) (1000));
+          Thread.sleep(1000);
 
           synchronized (Util.class) {
             Util.confirmed = false;

@@ -1,7 +1,7 @@
-package xyz.pupbrained.forge;
+package xyz.pupbrained.neoforge;
 
+import net.neoforged.fml.loading.FMLPaths;
 import xyz.pupbrained.DropConfirmExpectPlatform;
-import net.minecraftforge.fml.loading.FMLPaths;
 
 import java.nio.file.Path;
 
