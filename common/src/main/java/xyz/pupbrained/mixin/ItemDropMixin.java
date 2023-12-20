@@ -22,10 +22,9 @@ public class ItemDropMixin {
   @Inject(method = "dropSelectedItem", at = @At("HEAD"), cancellable = true)
   private void onItemDrop(boolean entireStack, CallbackInfoReturnable<Boolean> cir) {
     final var mc = MinecraftClient.getInstance();
-    final DropConfirmConfig config = DropConfirmConfig.GSON.instance();
     final var player = Objects.requireNonNull(mc.player);
 
-    System.out.println(config.enabled);
+//    System.out.println(DropConfirmConfig.enabled);
 
 //    if (Util.isDisabled(config) || Util.isMainHandStackEmpty(player))
 //      return;
@@ -36,11 +35,11 @@ public class ItemDropMixin {
     final var inventory = player.getInventory();
     var itemStack = inventory.getMainHandStack();
 
-//    if (config.blacklistedItems.contains(itemStack.getItem())) {
-//      if(!config.treatAsWhitelist) return;
-//    } else if (config.treatAsWhitelist) {
-//      return;
-//    }
+    if (DropConfirmConfig.blacklistedItems.contains(itemStack.getItem())) {
+      if(!DropConfirmConfig.treatAsWhitelist) return;
+    } else if (DropConfirmConfig.treatAsWhitelist) {
+      return;
+    }
 
     if (!Util.confirmed) {
       mc.inGameHud.setOverlayMessage(

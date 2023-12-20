@@ -15,7 +15,7 @@
   "icon": "assets/drop_confirm/icon.png",
   "environment": "*",
   "entrypoints": {
-    "main": [
+    "client": [
       "xyz.pupbrained.fabric.DropConfirmFabric"
     ],
     "modmenu": [

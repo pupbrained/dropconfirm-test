@@ -13,11 +13,8 @@ dependencies {
     // Remove the next line if you don't want to depend on the API
     modApi "dev.architectury:architectury:${rootProject.architectury_version}"
 
-    modImplementation("dev.isxander.yacl:yet-another-config-lib-common:3.2.1+1.20") {
-        exclude(group: "org.quiltmc.parsers")
-        exclude(group: "com.twelvemonkeys.common")
-        exclude(group: "com.twelvemonkeys.imageio")
-    }}
+    modCompileOnlyApi "maven.modrinth:midnightlib:1.4.1-fabric"
+}
 
 publishing {
     publications {
