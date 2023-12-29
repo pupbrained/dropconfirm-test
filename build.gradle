@@ -16,7 +16,10 @@ subprojects {
 
     dependencies {
         minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
-        mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+        mappings loom.layered() {
+            it.mappings("net.fabricmc:yarn:${project.yarn_mappings}:v2")
+            it.mappings file("mappings/yarnpatch.tiny")
+        }
     }
 }
 
@@ -35,10 +38,23 @@ allprojects {
     repositories {
         maven { url 'https://maven.isxander.dev/releases' }
         maven { url 'https://maven.terraformersmc.com/releases/' }
-        maven { url 'https://maven.quiltmc.org/repository/release' }
         maven { url 'https://oss.sonatype.org/content/repositories/snapshots' }
         maven { url 'https://api.modrinth.com/maven' }
         maven { url 'https://maven.neoforged.net/releases' }
+        maven {
+            name "kkIncReleases"
+            url "https://maven.aur.rocks/releases"
+            mavenContent {
+                releasesOnly()
+            }
+        }
+        maven {
+            name "kkIncSnapshots"
+            url "https://maven.aur.rocks/snapshots"
+            mavenContent {
+                snapshotsOnly()
+            }
+        }
     }
 
     tasks.withType(JavaCompile).configureEach {

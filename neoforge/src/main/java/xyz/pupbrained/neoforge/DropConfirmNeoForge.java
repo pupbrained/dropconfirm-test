@@ -8,8 +8,9 @@ import xyz.pupbrained.config.DropConfirmConfig;
 
 @Mod(DropConfirm.MOD_ID)
 public class DropConfirmNeoForge {
-    public DropConfirmNeoForge() {
-        ModLoadingContext.get().registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class, () ->
-          new ConfigScreenHandler.ConfigScreenFactory((client, parent) -> DropConfirmConfig.createScreen(parent)));
-    }
+  public DropConfirmNeoForge() {
+    ModLoadingContext.get().registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class, () ->
+      new ConfigScreenHandler.ConfigScreenFactory((client, parent) -> DropConfirmConfig.createScreen(parent)));
+    DropConfirm.init();
+  }
 }

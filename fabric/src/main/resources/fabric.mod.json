@@ -12,7 +12,7 @@
     "sources": "https://github.com/FabricMC/fabric-example-mod"
   },
   "license": "Insert License Here",
-  "icon": "assets/drop_confirm/icon.png",
+  "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
     "client": [
@@ -31,6 +31,7 @@
   "depends": {
     "fabric": "*",
     "minecraft": ">=1.20.4",
-    "architectury": ">=9.1.12"
+    "architectury": ">=11.0.9",
+    "the_config_lib": ">=4.0.0-SNAPSHOT"
   }
 }

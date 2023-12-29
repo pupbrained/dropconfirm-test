@@ -1,13 +1,12 @@
 package xyz.pupbrained.config;
 
-import dev.isxander.yacl3.api.*;
-import dev.isxander.yacl3.config.v2.api.ConfigClassHandler;
-import dev.isxander.yacl3.config.v2.api.SerialEntry;
-import dev.isxander.yacl3.config.v2.api.serializer.GsonConfigSerializerBuilder;
-import dev.isxander.yacl3.gui.controllers.BooleanController;
-import dev.isxander.yacl3.gui.controllers.dropdown.ItemController;
-import dev.isxander.yacl3.gui.controllers.slider.DoubleSliderController;
-import dev.isxander.yacl3.platform.YACLPlatform;
+import dev.tcl.api.*;
+import dev.tcl.config.api.ConfigClassHandler;
+import dev.tcl.config.api.SerialEntry;
+import dev.tcl.config.api.serializer.GsonConfigSerializerBuilder;
+import dev.tcl.gui.controllers.BooleanController;
+import dev.tcl.gui.controllers.dropdown.ItemController;
+import dev.tcl.gui.controllers.slider.DoubleSliderController;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -18,10 +17,13 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
+import static dev.tcl.platform.TCLPlatform.getConfigDir;
+
 public final class DropConfirmConfig {
   public static final ConfigClassHandler<DropConfirmConfig> GSON = ConfigClassHandler.createBuilder(DropConfirmConfig.class)
     .serializer(config -> GsonConfigSerializerBuilder.create(config)
-      .setPath(YACLPlatform.getConfigDir().resolve("drop_confirm.json"))
+      .setPath(getConfigDir().resolve("drop_confirm.json"))
+      .setJson5(true)
       .build())
     .build();
 
@@ -41,7 +43,7 @@ public final class DropConfirmConfig {
   public List<Item> blacklistedItems = List.of();
 
   public static Screen createScreen(Screen parent) {
-    return YetAnotherConfigLib.create(DropConfirmConfig.GSON, ((defaults, config, builder) -> {
+    return TheConfigLib.create(DropConfirmConfig.GSON, ((defaults, config, builder) -> {
       var defaultCategoryBuilder = ConfigCategory.createBuilder()
         .name(Text.translatable("category.drop_confirm.general"));
 
@@ -106,7 +108,7 @@ public final class DropConfirmConfig {
     })).generateScreen(parent);
   }
 
-  private static <T> Option<T> createOption (
+  private static <T> Option<T> createOption(
     String name,
     String description,
     T defaultValue,
@@ -126,7 +128,7 @@ public final class DropConfirmConfig {
       .build();
   }
 
-  private static <T> ListOption<T> createListOption (
+  private static <T> ListOption<T> createListOption(
     String name,
     String description,
     List<T> defaultValue,
